@@ -16,13 +16,17 @@ Note that the reason I don't use GPT is because GPT needs to pay, while llama2 i
 
 ### How to setup the python environment
 
+#### Setup the repo
+
 Assume you just cloned this code, all you need to do is:
 
 ```
 pipenv install
 ```
 
-This will get your pipenv environment setup. Below explain more on how I got this app started in the beginning
+This will get your pipenv environment setup.
+
+#### How lcel_example was setup
 
 I use pipenv to manage my local python environment. Below is how I setup to run lcel_example to start with
 
@@ -44,6 +48,8 @@ pipenv shell
 pipenv run python ./lcel_example/0.1_prompty.py
 ```
 
+#### How rag_example was setup
+
 Below is how I  setup rag_example to start with
 
 ```
@@ -51,4 +57,12 @@ pipenv install langchain
 pipenv install docarray
 pipenv install tiktoken
 pipenv install pydantic==1.10.9 # This is to fix this bug https://stackoverflow.com/questions/76880224/error-using-using-docarrayinmemorysearch-in-langchain-could-not-import-docarray
+```
+
+#### Additional tool
+
+To use the super Jupyter notebook and tools, this is certainly a plus
+
+```
+pipenv install jupyterlab
 ```
