@@ -19,13 +19,15 @@ documents = text_splitter.split_documents(docs)
 vector = DocArrayInMemorySearch.from_documents(documents, embeddings)
 
 # Create the prompt, llm and setup the dicynebt chain
-prompt = ChatPromptTemplate.from_template("""Answer the following question based only on the provided context:
+prompt = ChatPromptTemplate.from_template(
+    """Answer the following question based only on the provided context:
 
 <context>
 {context}
 </context>
 
-Question: {input}""")
+Question: {input}"""
+)
 
 llm = Ollama(model="llama2")
 document_chain = create_stuff_documents_chain(llm, prompt)
@@ -33,12 +35,16 @@ document_chain = create_stuff_documents_chain(llm, prompt)
 # Below is the result if we don't use the retriver chain
 from langchain_core.documents import Document
 
-answer = document_chain.invoke({
-    "input": "how can langsmith help with testing?",
-    "context": [Document(page_content="langsmith can let you visualize test results")]
-})
+answer = document_chain.invoke(
+    {
+        "input": "how can langsmith help with testing?",
+        "context": [
+            Document(page_content="langsmith can let you visualize test results")
+        ],
+    }
+)
 
-print('--- Not using retriever ---')
+print("--- Not using retriever ---")
 print(answer)
 
 # Below is the result if we use the retriever chain, which has a vector DB to source data
@@ -48,5 +54,5 @@ retriever = vector.as_retriever()
 retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
 response = retrieval_chain.invoke({"input": "how can langsmith help with testing?"})
-print('--- Using retriever ---')
+print("--- Using retriever ---")
 print(response["answer"])

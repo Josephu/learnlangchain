@@ -113,6 +113,8 @@ The content is from several articles:
 
 You can also build your own retriever from your preferred data source
 
+The source code is still broken at the moment. I am working on not using OpenAI because you have to pay, but it's really hard to get it working.
+
 #### Setup
 
 ```

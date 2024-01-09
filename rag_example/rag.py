@@ -7,7 +7,7 @@ from langchain_community.embeddings import OllamaEmbeddings
 
 vectorstore = DocArrayInMemorySearch.from_texts(
     ["harrison worked at kensho", "bears like to eat honey"],
-    embedding=OllamaEmbeddings()
+    embedding=OllamaEmbeddings(),
 )
 retriever = vectorstore.as_retriever()
 
