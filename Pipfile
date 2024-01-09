@@ -12,6 +12,11 @@ tiktoken = "*"
 pydantic = "==1.10.9"
 jupyter = "*"
 jupyterlab = "*"
+tavily-python = "*"
+faiss-cpu = "*"
+python-dotenv = "*"
+wikipedia = "*"
+langchainhub = "*"
 
 [dev-packages]
 
