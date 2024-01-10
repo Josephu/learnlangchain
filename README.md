@@ -16,11 +16,27 @@ Note that the reason I don't use GPT is because GPT needs to pay, while llama2 i
 
 Assume you just cloned this code, all you need to do is:
 
+1. Verify that you have python 3.x installed
 ```
-pipenv install
+python --version
+```
+
+2. Verify that you have pip installed
+```
+pip --version
+```
+
+3. Install pipenv
+```
+pip install pipenv --user
 ```
 
 This will get your pipenv environment setup.
+
+Note: I you prefer, you can use Homebrew
+```
+brew install pipenv
+```
 
 ## Walk through each example
 
@@ -59,7 +75,7 @@ pipenv install langchain-community
 pipenv shell
 
 # This is alternatively to above where you can just run directly in the shell
-pipenv run python ./lcel_example/0.1_prompty.py
+pipenv run python ./lcel_example/0.1_prompt.py
 ```
 
 ### 2. rag_example
