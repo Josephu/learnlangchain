@@ -40,6 +40,30 @@ brew install pipenv
 
 ## Walk through each example
 
+### 0. ollama_example
+
+ollama is an app that has multiple large language model which you can use locally. Technically it is a webserver in a docker image.
+
+The example aims to help you use any llm to answer questions.
+
+# Setup
+
+You can reference https://github.com/jmorganca/ollama to download the binary and run the binary.
+
+You should be able to get a chatbot running locally.
+
+To setup locally, I installed:
+```
+pipenv install langchain-community
+```
+
+More details on pipenv is described in the next example.
+
+To run it, all you need to do is:
+```
+pipenv run python ollama_example/ollama.py
+```
+
 ### 1. lcel_example
 
 The content is from https://python.langchain.com/docs/expression_language/get_started.
