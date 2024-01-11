@@ -42,9 +42,11 @@ brew install pipenv
 
 ### 0. ollama_example
 
-ollama is an app that has multiple large language model which you can use locally. Technically it is a webserver in a docker image.
+ollama is an app that has multiple large language model which you can use locally. Technically it starts a webserver in a docker image.
 
 The example aims to help you use any llm to answer questions.
+
+To learn more about using llm models locally, you can also read [here](https://python.langchain.com/docs/guides/local_llms)
 
 # Setup
 
