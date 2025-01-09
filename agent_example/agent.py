@@ -8,9 +8,11 @@ loader = WebBaseLoader("https://docs.smith.langchain.com/overview")
 
 docs = loader.load()
 
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings
 
-embeddings = OllamaEmbeddings()
+embeddings = OllamaEmbeddings(
+    model="llama3",
+)
 
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -35,7 +37,7 @@ tools = [retriever_tool, search]
 
 from langchain_community.chat_models import ChatOllama
 
-llm = ChatOllama(model="llama2")
+llm = ChatOllama(model="llama3")
 
 from langchain import hub
 

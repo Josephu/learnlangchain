@@ -5,12 +5,12 @@ Below are just notes of how I got the app setup. Useful for infrequent Python us
 
 ### Setup LLM
 
-Since we are using llama2 in this environment, to utilize llm in your local environment, you also need to install
-llama2 to be able to run the script.
+Since we are using 3 in this environment, to utilize llm in your local environment, you also need to install
+llama3 to be able to run the script.
 
-Check this out to use llama2 locally in no time https://github.com/jmorganca/ollama.
+Check this out to use llama3 locally in no time https://github.com/jmorganca/ollama.
 
-Note that the reason I don't use GPT is because GPT needs to pay, while llama2 is free.
+Note that the reason I don't use GPT is because GPT needs to pay, while llama3 is free.
 
 ## How to setup the python environment
 
@@ -46,7 +46,7 @@ ollama is an app that has multiple large language model which you can use locall
 
 The example aims to help you use any llm to answer questions.
 
-To learn more about using llm models locally, you can also read [here](https://python.langchain.com/docs/guides/local_llms)
+To learn more about using llm models locally, you can also read [here](https://python.langchain.com/api_reference/ollama/llms/langchain_ollama.llms.OllamaLLM.html)
 
 # Setup
 
@@ -54,21 +54,29 @@ You can reference https://github.com/jmorganca/ollama to download the binary and
 
 You should be able to get a chatbot running locally.
 
+In the code example we use `llama3`, so please pull down `llama3` before running the code.
+
+```
+# This will pull llama3 llm into ollama. You can also pull others, please check github site for more details.
+ollama pull llama3
+```
+
 To setup locally, I installed:
 ```
 pipenv install langchain-community
+pipenv install langchain-ollama
 ```
 
 More details on pipenv is described in the next example.
 
 To run it, all you need to do is:
 ```
-pipenv run python ollama_example/ollama.py
+pipenv run python ollama_example/ollama_test.py
 ```
 
 ### 1. lcel_example
 
-The content is from https://python.langchain.com/docs/expression_language/get_started.
+The content is from https://python.langchain.com/docs/tutorials/.
 
 The goal is to help you see:
 1. How to use a prompt to provide a question framework to the llm,
@@ -94,9 +102,11 @@ I use pipenv to manage my local python environment. Below is how I setup to run 
 # some ppl use pipenv --rm, I just delete the profile directly in /Users/<username>/.local/share/virtualenvs/xxx
 
 # This will install libraries you need in the pipenv virtualenv environment and add to Pipfile and Pipfile.lock
+```
 pipenv install langchain-core
 pipenv install langchain-community
-
+pipenv install langchain-ollama
+```
 # This will run the terminal within that environment, you can run any commands in the new terminal
 pipenv shell
 
@@ -106,7 +116,7 @@ pipenv run python ./lcel_example/0.1_prompt.py
 
 ### 2. rag_example
 
-The content is from https://python.langchain.com/docs/expression_language/get_started
+The content is from https://python.langchain.com/docs/tutorials/
 
 RAG means retrieval-augmented generation, which means you can introduce additional context into'
 the engine for the AI to use to answer the questions
@@ -119,12 +129,13 @@ Below is how I setup rag_example to start with
 pipenv install langchain
 pipenv install docarray
 pipenv install tiktoken
-pipenv install pydantic==1.10.9 # This is to fix this bug https://stackoverflow.com/questions/76880224/error-using-using-docarrayinmemorysearch-in-langchain-could-not-import-docarray
+pipenv install beautifulsoup4
+pipenv install pydantic
 ```
 
 ### 3. How retriever_example was setup
 
-The content is from https://python.langchain.com/docs/get_started/quickstart
+The content is from https://python.langchain.com/docs/tutorials/
 
 This is similar to previous example, except it provide more details on how to use
 a vector store as well as an embedding model.

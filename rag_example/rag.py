@@ -2,12 +2,14 @@ from langchain_community.vectorstores import DocArrayInMemorySearch
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
-from langchain_community.chat_models import ChatOllama
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import ChatOllama
+from langchain_ollama import OllamaEmbeddings
 
 vectorstore = DocArrayInMemorySearch.from_texts(
     ["harrison worked at kensho", "bears like to eat honey"],
-    embedding=OllamaEmbeddings(),
+    embedding = OllamaEmbeddings(
+        model="llama3",
+    ),
 )
 retriever = vectorstore.as_retriever()
 
@@ -17,7 +19,7 @@ template = """Answer the question based only on the following context:
 Question: {question}
 """
 prompt = ChatPromptTemplate.from_template(template)
-model = ChatOllama(model="llama2")
+model = ChatOllama(model="llama3")
 output_parser = StrOutputParser()
 
 setup_and_retrieval = RunnableParallel(

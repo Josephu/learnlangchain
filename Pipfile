@@ -4,21 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-langchain-core = "*"
 langchain-community = "*"
+langchain-ollama = "*"
 langchain = "*"
 docarray = "*"
 tiktoken = "*"
-pydantic = "==1.10.9"
-jupyter = "*"
-jupyterlab = "*"
-tavily-python = "*"
+pydantic = "*"
+beautifulsoup4 = "*"
 faiss-cpu = "*"
-python-dotenv = "*"
+tavily-python = "*"
 wikipedia = "*"
-langchainhub = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.13"

@@ -1,7 +1,7 @@
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import DocArrayInMemorySearch
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -11,7 +11,9 @@ loader = WebBaseLoader("https://docs.smith.langchain.com/overview")
 docs = loader.load()
 
 # Embedding is used to vectorize the documents
-embeddings = OllamaEmbeddings()
+embeddings = OllamaEmbeddings(
+    model="llama3",
+)
 
 # The source data is split into chunks and build into a vector DB
 text_splitter = RecursiveCharacterTextSplitter()
@@ -29,7 +31,7 @@ prompt = ChatPromptTemplate.from_template(
 Question: {input}"""
 )
 
-llm = Ollama(model="llama2")
+llm = OllamaLLM(model="llama3")
 document_chain = create_stuff_documents_chain(llm, prompt)
 
 # Below is the result if we don't use the retriver chain

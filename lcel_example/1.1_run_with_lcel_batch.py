@@ -2,10 +2,10 @@
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 
 prompt = ChatPromptTemplate.from_template("tell me a short joke about {topic}")
-model = ChatOllama(model="llama2")
+model = ChatOllama(model="llama3")
 output_parser = StrOutputParser()
 
 # this is using the LCEL (Langchain Expression Language)
